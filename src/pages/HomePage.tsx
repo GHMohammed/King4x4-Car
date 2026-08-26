@@ -70,10 +70,10 @@ export const HomePage: React.FC = () => {
                 </button>
 
                 <button
-                  onClick={() => navigate('/brand')}
+                  onClick={() => navigate('/shop')}
                   className="bg-[#101416] hover:bg-[#272a2d] text-white border border-[#323538] hover:border-[#fae500] font-tajawal font-bold text-sm px-6 py-3.5 rounded-xl transition-colors"
                 >
-                  استعراض الهوية البصرية والمواصفات
+                  استعراض أحدث القطع والتجهيزات
                 </button>
               </div>
             </div>
