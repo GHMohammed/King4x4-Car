@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-tajawal: 'Tajawal', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+
+    /* ---- KING 4x4 brand tokens (source of truth) ----
+       المصدر الرسمي لألوان الهوية. استخدم هذه المتغيّرات في المكوّنات الجديدة
+       بدل الألوان المكتوبة يدوياً (hex) لتوحيد الهوية وتسهيل أي تعديل لاحق. */
+    --k-blue: #2E3192;      /* Royal Blue */
+    --k-yellow: #FFEA00;    /* Royal Yellow (CTAs / accents) */
+    --k-navy: #0E172A;      /* Dark Navy */
+    --k-bg: #101416;        /* App surface (dark) */
+    --k-surface: #191c1e;   /* Cards */
+    --k-border: #323538;    /* Hairlines */
+    --k-text: #e0e3e6;      /* Primary text */
+    --k-text-soft: #bec6e0; /* Secondary text */
+    --k-text-faint: #908f9d;/* Muted text */
+  }
+
+  body {
+    font-family: 'Tajawal', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom styles for KING 4x4 */
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-tajawal {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Tire track pattern effect */
+.tire-track-bg {
+  background-image: radial-gradient(rgba(250, 229, 0, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101416;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #323538;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fae500;
+}
