@@ -121,14 +121,6 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
                   {t('nav.services')}
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab('brand')}
-                  className="hover:text-[#fae500] transition-colors"
-                >
-                  {t('nav.brand')}
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -181,7 +173,14 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             </span>
           </div>
 
-          <div className="flex flex-wrap gap-4 text-[#bec6e0]">
+          <div className="flex flex-wrap items-center gap-4 text-[#bec6e0]">
+            <button
+              onClick={() => setActiveTab('brand')}
+              className="hover:text-[#fae500] transition-colors"
+            >
+              {t('nav.brand')}
+            </button>
+            <span>•</span>
             <a href="#privacy" className="hover:text-[#fae500] transition-colors">{t('footer.privacy')}</a>
             <span>•</span>
             <a href="#terms" className="hover:text-[#fae500] transition-colors">{t('footer.terms')}</a>
