@@ -31,11 +31,13 @@ export const RegisterPage: React.FC = () => {
     key: keyof typeof form,
     placeholder: string,
     type = 'text',
+    inputMode?: React.InputHTMLAttributes<HTMLInputElement>['inputMode'],
   ) => (
     <div className="relative">
       <span className="absolute top-3.5 start-3.5 text-[#908f9d]">{icon}</span>
       <input
         type={type}
+        inputMode={inputMode}
         className={inputCls}
         placeholder={placeholder}
         value={form[key]}
@@ -59,7 +61,7 @@ export const RegisterPage: React.FC = () => {
       >
         {field(<User className="w-4 h-4" />, 'name', t('auth.fullName'))}
         {field(<Mail className="w-4 h-4" />, 'email', t('auth.email'), 'email')}
-        {field(<Phone className="w-4 h-4" />, 'phone', t('auth.phone'), 'tel')}
+        {field(<Phone className="w-4 h-4" />, 'phone', t('auth.phone'), 'text', 'tel')}
         {field(<Lock className="w-4 h-4" />, 'password', t('auth.password'), 'password')}
         {field(<Lock className="w-4 h-4" />, 'confirm', t('auth.confirmPassword'), 'password')}
 

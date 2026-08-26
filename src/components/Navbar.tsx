@@ -149,16 +149,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center focus:outline-none group text-right"
               aria-label="KING 4x4 Home"
             >
-              <div className="flex items-center gap-3">
-                <div className="shrink-0">
-                  <KingLogo variant="color" size="md" />
-                </div>
-                <div className="hidden xl:block">
-                  <span className="block text-xs font-bold text-[#fae500] tracking-wider font-montserrat">
-                    OFF-ROAD PERFORMANCE
-                  </span>
-                  <span className="text-[13px] text-[#bec6e0] font-tajawal">{t('nav.tagline')}</span>
-                </div>
+              <div className="shrink-0">
+                <KingLogo variant="color" size="md" />
               </div>
             </button>
           </div>
@@ -188,8 +180,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               );
             })}
 
-            {/* Support dropdown */}
-            <div className="relative" ref={supportRef}>
+            {/* Support dropdown — يفتح بالمرور (hover) ويغلق عند خروج المؤشر */}
+            <div
+              className="relative"
+              ref={supportRef}
+              onMouseEnter={() => setSupportOpen(true)}
+              onMouseLeave={() => setSupportOpen(false)}
+            >
               <button
                 onClick={() => setSupportOpen((v) => !v)}
                 className="px-3.5 py-2 rounded-lg font-tajawal font-bold text-sm text-[#e0e3e6] hover:text-[#fae500] transition-colors flex items-center gap-1.5"
@@ -202,17 +199,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                 />
               </button>
               {supportOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-[#1d2022] border border-[#323538] rounded-xl shadow-2xl py-2 z-50">
-                  {supportLinks.map((s) => (
-                    <button
-                      key={s.path}
-                      onClick={() => go(s.path)}
-                      className="w-full text-right px-3 py-2 text-xs font-bold text-[#e0e3e6] hover:bg-[#272a2d] hover:text-[#fae500] flex items-center gap-2.5 transition-colors"
-                    >
-                      <span className="text-[#fae500]">{s.icon}</span>
-                      <span>{s.label}</span>
-                    </button>
-                  ))}
+                // pt-2 = جسر شفاف يغطّي الفجوة بين الزر والقائمة حتى لا يُغلق أثناء العبور
+                <div className="absolute top-full end-0 pt-2 w-48 z-50">
+                  <div className="bg-[#1d2022] border border-[#323538] rounded-xl shadow-2xl py-2">
+                    {supportLinks.map((s) => (
+                      <button
+                        key={s.path}
+                        onClick={() => go(s.path)}
+                        className="w-full text-right px-3 py-2 text-xs font-bold text-[#e0e3e6] hover:bg-[#272a2d] hover:text-[#fae500] flex items-center gap-2.5 transition-colors"
+                      >
+                        <span className="text-[#fae500]">{s.icon}</span>
+                        <span>{s.label}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -243,7 +243,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Login (pill button — no dropdown) */}
             <button
               onClick={() => navigate('/login')}
-              className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-[#191c1e] border-[#323538] text-[#bec6e0] hover:text-[#fae500] hover:border-[#fae500] text-xs font-bold font-tajawal transition-colors"
+              className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-[11px] rounded-lg border bg-[#191c1e] border-[#323538] text-[#bec6e0] hover:text-[#fae500] hover:border-[#fae500] text-xs font-bold font-tajawal transition-colors"
               title={t('nav.login')}
             >
               <User className="w-4 h-4" />
