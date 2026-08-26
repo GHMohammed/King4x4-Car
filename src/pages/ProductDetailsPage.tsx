@@ -17,9 +17,7 @@ import { PriceDisplay } from '../components/ui/PriceDisplay';
 import { QuantitySelector } from '../components/ui/QuantitySelector';
 import { formatPrice } from '../lib/currency';
 import { useLanguage, productName, vehicleName } from '../i18n/LanguageContext';
-
-// رقم واتساب الشركة (بصيغة دولية بدون +).
-const WHATSAPP_NUMBER = '96560600890';
+import { whatsappLink } from '../lib/contact';
 
 export const ProductDetailsPage: React.FC = () => {
   const { slug = '' } = useParams();
@@ -75,11 +73,7 @@ export const ProductDetailsPage: React.FC = () => {
   const handleWhatsAppInquiry = () => {
     const productUrl = `${window.location.origin}/product/${product.id}`;
     const message = `${t('product.whatsappIntro')}\n${name}\nSKU: ${product.id}\n${productUrl}`;
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
-      '_blank',
-      'noopener,noreferrer',
-    );
+    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer');
   };
 
   return (

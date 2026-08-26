@@ -14,6 +14,10 @@ import { BuilderPage } from './pages/BuilderPage';
 import { VehiclesPage } from './pages/VehiclesPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { BrandPage } from './pages/BrandPage';
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { ContactPage } from './pages/ContactPage';
+import { TrackOrderPage } from './pages/TrackOrderPage';
 import { useCart } from './context/CartContext';
 import { useAppState } from './context/AppStateContext';
 import { ActiveTab } from './types';
@@ -67,6 +71,10 @@ export default function App() {
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/brand" element={<BrandPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/track-order" element={<TrackOrderPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
