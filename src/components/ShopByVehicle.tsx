@@ -84,15 +84,13 @@ export const ShopByVehicle: React.FC<ShopByVehicleProps> = ({
                 </div>
               )}
 
-              {/* Logo Circle Container */}
-              <div className="w-20 h-20 bg-[#101416] rounded-2xl p-2.5 flex items-center justify-center border border-[#323538] group-hover:border-[#fae500]/60 group-hover:scale-105 transition-all shadow-inner">
-                <img
-                  src={vehicle.logo}
-                  alt={vehicle.name}
-                  className="w-12 h-12 object-contain filter drop-shadow-md"
-                  loading="lazy"
-                />
-              </div>
+              {/* Brand logo (no box) */}
+              <img
+                src={vehicle.logo}
+                alt={vehicle.name}
+                className="w-16 h-16 object-contain group-hover:scale-105 transition-transform"
+                loading="lazy"
+              />
 
               {/* Vehicle Name */}
               <div className="text-center">
@@ -123,13 +121,11 @@ export const ShopByVehicle: React.FC<ShopByVehicleProps> = ({
 
             {/* Modal Header */}
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-[#101416] rounded-xl p-2 flex items-center justify-center border border-[#323538]">
-                <img
-                  src={activeModalVehicle.logo}
-                  alt={activeModalVehicle.name}
-                  className="w-10 h-10 object-contain"
-                />
-              </div>
+              <img
+                src={activeModalVehicle.logo}
+                alt={activeModalVehicle.name}
+                className="w-14 h-14 object-contain flex-shrink-0"
+              />
               <div>
                 <h3 className="text-2xl font-bold text-white font-tajawal flex items-center gap-2">
                   {t('nav.selectVehicle')}: {vehicleName(activeModalVehicle, lang)}

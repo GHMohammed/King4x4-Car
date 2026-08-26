@@ -1,4 +1,10 @@
 import { Vehicle, Product, RigCategory, Category, Service } from '../types';
+import toyotaLogo from '../assets/logos/toyota.png';
+import nissanLogo from '../assets/logos/nissan.png';
+import fordLogo from '../assets/logos/ford.png';
+import jeepLogo from '../assets/logos/jeep.png';
+import mitsubishiLogo from '../assets/logos/mitsubishi.png';
+import landroverLogo from '../assets/logos/landrover.png';
 
 export const HERO_IMAGE = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDOG_Gkx2lL5R2sHPtejXGjTnLpmRgzie3jVxnsnbaA45E_l9x8Z_9D2smJS1Jdh_YNZUZq-CqrZE0VkbvrWCWBVWAYUbnmc4Jz4dsz6l18sT5-EV9GaziNMoiPwJ_PMLPiwTbI0RWzOPKwhBwvvAG-f7uAuCdRVi4MYQW5GVli2mph3XCuvN4nO2-YQL2uo5PI0bqI2W84TNJ3uIo_FIo8YwasICl-2acX0sx5PlX5MwXm-3CUxiE0';
 
@@ -7,7 +13,7 @@ export const VEHICLES: Vehicle[] = [
     id: 'toyota',
     name: 'Toyota',
     arabicName: 'تويوتا',
-    logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC0m0xxpLzrYju1VksB8GrsiV8G13RM__-IpquP7l6zLsYD-MQYnBy1h068pXsEWQA39twfY4jcKhGK94alwIc9iuueShtbmSslCUYqt9MbCC9AZQmz_bfI6mdSZV1AbgBT2E4veQ-a7Po5yeKgEFt5OQhFNpbIw_QbkhUuYNRYwcUeHtQOYNjVEWGgFI4tBTlnTsFC1vvJtlq4eTM9Fusdl-Ji4-XdfOWiydSr62BFkRCwtV87keRz',
+    logo: toyotaLogo,
     models: [
       { id: 'lc300', name: 'لاند كروزر 300', years: '2022 - 2025', image: 'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=800&q=80' },
       { id: 'lc70', name: 'لاند كروزر شاص / ربع 70', years: '2007 - 2025', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80' },
@@ -21,7 +27,7 @@ export const VEHICLES: Vehicle[] = [
     id: 'nissan',
     name: 'Nissan',
     arabicName: 'نيسان',
-    logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA4RmsMjBa7yUejDEdRhNDEFKrgwMULqRV_g8qIwHHVOxhIYiIKCqY685Fy3_xYmIRkhYU3AXJajm9avjfXFYj7w08GMTE-oUBUZQ8dJgglSidmqW-EaUKaO02npAcBwHLFqHSD6Q_Cp3tYodNCVPKaHmD77JWP1xuotzh-4OrSC7jaSAriatJWrtBazwUdGCnBxKlElojugb2uR9jJJsJuANd1vzOSKM4YK28hMFZLMnjzyYjgwWVA',
+    logo: nissanLogo,
     models: [
       { id: 'patrol-y62', name: 'باترول Patrol Y62', years: '2010 - 2025', image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=800&q=80' },
       { id: 'super-safari-y61', name: 'باترول سوبر سفاري Y61 / فتك', years: '1998 - 2024', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80' },
@@ -33,7 +39,7 @@ export const VEHICLES: Vehicle[] = [
     id: 'ford',
     name: 'Ford',
     arabicName: 'فورد',
-    logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDOQrJN7GFP_6h7V3yKBJXpMhcF8CcNlwz9vy6VP-62OfNGCGDoPyfydDkG8r8Ms9VQh4LILUWJtfMVIYrc-XaKcxUEw0oCtmsJarOFe2esAKub5hIsf3aegSBHnJjWeCTYZseIb5ZPMcDpC8oWHFmjFHV3JuoejtMUABIPv-X_quvcfKEPxrb00c3pjuXKjNGEIL2r38EwgWmBAsXH30Pe3amwXJjOPxiqHrFPAt1gYrPJnHwvcXIV',
+    logo: fordLogo,
     models: [
       { id: 'f150-raptor', name: 'F-150 رابتور Raptor', years: '2017 - 2025', image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=800&q=80' },
       { id: 'bronco', name: 'برونكو Bronco Badlands / Raptor', years: '2021 - 2025', image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80' },
@@ -44,7 +50,7 @@ export const VEHICLES: Vehicle[] = [
     id: 'jeep',
     name: 'Jeep',
     arabicName: 'جيب',
-    logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAV0bb_RJGN94Jwh5p5SQQbEiBCk7jcZ-pMjNrZGZuFBhyty2NCPcpZP77o8zZ6llKDx5XpmIG2l2HkcKD14nYtTYnm_VTuDqSWFLMpNoR8UIk3rDCjdSPVx5y1nDZQQBkY6KMS-AXQKOvwwfQ73jSo93U9zAerx7jbG5UlWFEiTdPxXt-LyrkfVFX1Au9yZX_mx6fuH0dbdL-DNrm4MRP8Zd_q1nwXPsnbO-TNMeZHtc47fmyuNDs-',
+    logo: jeepLogo,
     models: [
       { id: 'wrangler-jl', name: 'رانجلر روبيكون Wrangler JL', years: '2018 - 2025', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80' },
       { id: 'wrangler-jk', name: 'رانجلر Wrangler JK', years: '2007 - 2018', image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80' },
@@ -55,7 +61,7 @@ export const VEHICLES: Vehicle[] = [
     id: 'mitsubishi',
     name: 'Mitsubishi',
     arabicName: 'ميتسوبيشي',
-    logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB5kS38MhFEJ06kZ2SYupM7PaXslbQ3eRNyMP3dABVhr3O1yOBRUj9-ElVqLkJhULyW4BlOAWWmR5_C3OUeLd0GYgB3240DVZrij4LT-vEUXfwS3o_hHXy_Cef12TE7tQbUifnZC7rLi_eeWIqc95ddyCmWCaNGqpjNlyAhHfs0SNCCYj9DRN5pX-LCgojwYlk3atcutU3enwvRa2SQf87BTCbw8SBIlSSXZotvZP8BwwCh-uom8WuV',
+    logo: mitsubishiLogo,
     models: [
       { id: 'pajero', name: 'باجيرو Pajero 3.8 / 3.5', years: '2007 - 2022', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80' },
       { id: 'l200', name: 'L200 بيك آب', years: '2016 - 2025', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80' },
@@ -65,7 +71,7 @@ export const VEHICLES: Vehicle[] = [
     id: 'landrover',
     name: 'Land Rover',
     arabicName: 'لاند روفر',
-    logo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDdadj3ifJFbUOv_79xBBf5QQxFQgAw_sZxozww2PgCnTXdfnhhGCna-O60MyoE1oUDBynClf5eGqadtxQBZpIInDF5Gv_VvhFINWFmdXLm0RqVHYbzMAIaSEcCf_0Jgl244FXvJlZnCAYKxZ8zo5PJaxtT7dF5LCA4i-GZyMo8bd2lY5uNImFNEvFcfaBrRSD9Ld3GOMGwpy49HQkV2OYgs_64nVI3Hi_VgVQnk59hrJdwKzknp6yX',
+    logo: landroverLogo,
     models: [
       { id: 'defender-110', name: 'ديفندر Defender 110 / 130', years: '2020 - 2025', image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80' },
       { id: 'defender-90', name: 'ديفندر Defender 90', years: '2020 - 2025', image: 'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=800&q=80' },

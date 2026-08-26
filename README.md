@@ -39,6 +39,10 @@
 | 📄 **صفحات حقيقية** | توجيه (Routing) بروابط عميقة قابلة للمشاركة وفلاتر في الـ URL |
 | 💳 **واجهة دفع** | تدفّق من 5 أقسام جاهز لربط بوابة Tap لاحقاً |
 | 🧩 **مكتبة مكوّنات** | عناصر قابلة لإعادة الاستخدام + حالات تحميل (Skeletons) وحالات فارغة |
+| 👤 **حساب المستخدم** | صفحتا تسجيل الدخول وإنشاء الحساب (واجهة، تُفعّل مع الخلفية) |
+| 📞 **الدعم** | صفحتا «اتصل بنا» و«تتبع الطلب» + قائمة دعم منسدلة في الهيدر |
+| 🟢 **استفسار واتساب** | زر في صفحة المنتج يفتح واتساب برسالة جاهزة (اسم المنتج + SKU + الرابط) |
+| 🎨 **هيدر متجاوب** | شفاف عند القمة ويتحوّل صلباً عند التمرير، وشعارات ماركات شفافة بلا صناديق |
 
 ---
 
@@ -111,7 +115,8 @@ src/
 ├─ main.tsx                 # نقطة الدخول + ترتيب المزوّدين (Providers)
 ├─ App.tsx                  # الهيكل العام: Navbar + Routes + Footer + Overlays
 │
-├─ pages/                   # صفحات المسارات (Home / Shop / ProductDetails / Cart / Checkout …)
+├─ assets/logos/            # شعارات الماركات (PNG شفافة)
+├─ pages/                   # صفحات المسارات (Home / Shop / ProductDetails / Cart / Checkout / Login / Register / Contact / TrackOrder …)
 ├─ components/              # مكوّنات العرض (Navbar, Hero, ProductCard, CartDrawer …)
 │  └─ ui/                   # عناصر أساسية (PriceDisplay, QuantitySelector, EmptyState, Skeleton …)
 │
@@ -131,7 +136,8 @@ src/
 │
 ├─ lib/
 │  ├─ apiClient.ts          # عميل REST لخلفية Spring Boot المستقبلية
-│  └─ currency.ts           # تنسيق العملة (الدينار الكويتي)
+│  ├─ currency.ts           # تنسيق العملة (الدينار الكويتي)
+│  └─ contact.ts            # بيانات تواصل الشركة (واتساب / هاتف / بريد)
 │
 ├─ routes/paths.ts          # ربط التبويبات بالمسارات
 └─ types.ts                 # نماذج TypeScript (Product, Vehicle, Category, Service …)
@@ -148,6 +154,8 @@ src/
 | `/checkout` | الدفع |
 | `/builder` | منصّة التجهيز التفاعلية |
 | `/vehicles` · `/services` · `/brand` | التصفّح حسب المركبة · الخدمات · الهوية البصرية |
+| `/login` · `/register` | تسجيل الدخول · إنشاء حساب (واجهة) |
+| `/contact` · `/track-order` | اتصل بنا · تتبع الطلب |
 
 ---
 
