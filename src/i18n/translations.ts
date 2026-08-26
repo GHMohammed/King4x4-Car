@@ -92,6 +92,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     'product.notFoundDesc': 'ربما تم حذف هذا المنتج أو تغيّر رابطه.',
     'product.backToShop': 'العودة إلى المتجر',
     'product.loading': 'جارٍ تحميل تفاصيل المنتج…',
+    'product.inquireWhatsapp': 'استفسر عبر واتساب',
+    'product.continueShopping': 'مواصلة التسوق',
+    'product.whatsappIntro': 'مرحباً، أنا مهتم بهذا المنتج:',
 
     // السلة
     'cart.title': 'سلة التجهيزات',
@@ -259,6 +262,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     'product.notFoundDesc': 'This product may have been removed or its link changed.',
     'product.backToShop': 'Back to shop',
     'product.loading': 'Loading product details…',
+    'product.inquireWhatsapp': 'Inquire via WhatsApp',
+    'product.continueShopping': 'Continue shopping',
+    'product.whatsappIntro': 'Hello, I am interested in this product:',
 
     // cart
     'cart.title': 'Outfitting cart',
