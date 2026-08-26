@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ShoppingCart, 
   Search, 
@@ -43,6 +43,21 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { data: vehicles } = useVehicles();
   const { t, lang, toggle } = useLanguage();
 
+  // خلفية شفافة في الأعلى، وتصبح صلبة عند التمرير للأسفل
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll(); // ضبط الحالة الأولية (مثلاً عند إعادة التحميل في منتصف الصفحة)
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  // القائمة المفتوحة على الموبايل تفرض خلفية صلبة للقراءة
+  const solid = scrolled || mobileMenuOpen;
+
+  // شريط "عرض الموسم" العلوي — مخفي حالياً.
+  // TODO(dashboard): يُتحكَّم بإظهاره/إخفائه وتخصيص نصّه لاحقاً من لوحة تحكم مدير المتجر.
+  const SHOW_SEASON_BANNER = false;
+
   const navLinks: { tab: ActiveTab; label: string; icon: React.ReactNode; badge?: string }[] = [
     { tab: 'home', label: t('nav.home'), icon: <Compass className="w-4 h-4" /> },
     { tab: 'store', label: t('nav.shop'), icon: <Layers className="w-4 h-4" /> },
@@ -69,8 +84,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   return (
-    <header className="sticky top-0 z-50 bg-[#101416]/95 backdrop-blur-md border-b border-[#323538] transition-all">
-      {/* Top micro banner */}
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        solid
+          ? 'bg-[#101416]/95 backdrop-blur-md border-b border-[#323538] shadow-lg shadow-black/20'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      {/* Top micro banner — خلفية ثابتة #2E3192 دائماً. مخفي عبر SHOW_SEASON_BANNER (لوحة التحكم مستقبلاً) */}
+      {SHOW_SEASON_BANNER && (
       <div className="bg-[#2E3192] text-white text-xs py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
           <div className="flex items-center gap-2">
@@ -97,6 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
+      )}
 
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="KING 4x4 Home"
             >
               <div className="flex items-center gap-3">
-                <div className="bg-[#0b0f11] p-2 rounded-xl border border-[#323538] group-hover:border-[#fae500] transition-colors shadow-inner">
+                <div className="shrink-0">
                   <KingLogo variant="color" size="md" />
                 </div>
                 <div className="hidden xl:block">
@@ -134,9 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={link.tab}
                   onClick={() => setActiveTab(link.tab)}
                   className={`relative px-3.5 py-2 rounded-lg font-tajawal font-bold text-sm transition-all flex items-center gap-2 ${
-                    isActive
-                      ? 'text-[#fae500] bg-[#1d2022] border border-[#fae500]/30 shadow-sm'
-                      : 'text-[#e0e3e6] hover:text-[#fae500] hover:bg-[#191c1e]'
+                    isActive ? 'text-[#fae500]' : 'text-[#e0e3e6] hover:text-[#fae500]'
                   }`}
                 >
                   {link.label}

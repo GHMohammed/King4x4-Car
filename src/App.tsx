@@ -56,7 +56,7 @@ export default function App() {
         openSearch={openSearch}
       />
 
-      <main className="flex-1">
+      <main className={`flex-1 ${location.pathname === '/' ? '' : 'pt-20'}`}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />

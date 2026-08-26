@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
           
           {/* Col 1: Brand & Bio */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="inline-block bg-[#101416] p-2 rounded-xl border border-[#323538]">
+            <div className="inline-block">
               <KingLogo variant="color" size="md" />
             </div>
             <p className="text-xs sm:text-sm text-[#908f9d] leading-relaxed max-w-sm">

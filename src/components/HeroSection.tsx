@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Wrench, Shield, Compass, Mountain, Flame, Zap } from 'lucide-react';
+import { ArrowLeft, Wrench, Shield, Compass, Mountain, Zap } from 'lucide-react';
 import { HERO_IMAGE } from '../data/mockData';
 import { ActiveTab } from '../types';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -32,16 +32,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-[#101416] via-[#101416]/70 to-transparent hidden md:block" />
         </div>
 
-        {/* Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col md:items-start items-center text-center md:text-start">
-          
-          {/* Crown & King Shock Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#2E3192]/80 border border-[#fae500]/40 px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm shadow-lg">
-            <Flame className="w-4 h-4 text-[#fae500]" />
-            <span className="text-xs sm:text-sm font-bold text-white font-tajawal">
-              {t('hero.badge')}
-            </span>
-          </div>
+        {/* Content Container — pt علوي لضمان مسافة أمان أسفل الهيدر الثابت */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 md:pt-44 md:pb-24 flex flex-col md:items-start items-center text-center md:text-start">
 
           {/* Main Display Headline */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white leading-tight md:leading-[1.15] mb-6 drop-shadow-2xl font-tajawal max-w-2xl">
