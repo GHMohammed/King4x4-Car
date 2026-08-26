@@ -3,17 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { Sparkles, Wrench } from 'lucide-react';
 import { HeroSection } from '../components/HeroSection';
 import { ShopByVehicle } from '../components/ShopByVehicle';
-import { ProductCatalog } from '../components/ProductCatalog';
+import { ProductGrid } from '../components/ProductGrid';
 import { ServicesSection } from '../components/ServicesSection';
 import { useCart } from '../context/CartContext';
 import { useAppState } from '../context/AppStateContext';
+import { useFeaturedProducts } from '../data/hooks';
+import { useLanguage } from '../i18n/LanguageContext';
 import { ActiveTab, Vehicle } from '../types';
 import { tabToPath } from '../routes/paths';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const { addToCart } = useCart();
   const { selectedVehicle, setSelectedVehicle } = useAppState();
+  const { data: featured, loading: featuredLoading } = useFeaturedProducts();
 
   const setActiveTab = (tab: ActiveTab) => navigate(tabToPath(tab));
 
@@ -81,11 +85,28 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <ProductCatalog
-        selectedVehicle={selectedVehicle}
-        onAddToCart={addToCart}
-        onSelectVehicle={setSelectedVehicle}
-      />
+      {/* Featured products (limited set — full paginated catalog lives on /shop) */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-[#323538] pb-6 mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-[#fae500] mb-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{t('home.featured')}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-tajawal">
+              {t('home.featuredSub')}
+            </h2>
+          </div>
+          <button
+            onClick={() => navigate('/shop')}
+            className="bg-[#191c1e] hover:bg-[#272a2d] text-white border border-[#323538] hover:border-[#fae500] font-tajawal font-bold text-sm px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
+          >
+            {t('home.viewAll')}
+          </button>
+        </div>
+
+        <ProductGrid products={featured} loading={featuredLoading} onAddToCart={addToCart} skeletonCount={8} />
+      </section>
 
       <ServicesSection />
     </>

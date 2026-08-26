@@ -1,16 +1,32 @@
-import { Product, ProductQuery } from '../../types';
+import { Product, ProductQuery, Page } from '../../types';
 import { PRODUCTS } from '../mockData';
 import { ApiClient } from '../../lib/apiClient';
+
+const DEFAULT_PAGE_SIZE = 12;
 
 /**
  * عقد الوصول لبيانات المنتجات. المكوّنات تتحدث لهذه الواجهة فقط،
  * دون معرفة ما إذا كان المصدر بيانات وهمية أو REST.
  */
 export interface ProductRepository {
-  getAll(query?: ProductQuery): Promise<Product[]>;
+  /** يعيد صفحة مرقّمة بعد تطبيق الفلاتر والترتيب */
+  getAll(query?: ProductQuery): Promise<Page<Product>>;
   getFeatured(): Promise<Product[]>;
   getBySlug(slug: string): Promise<Product | null>;
   getRelated(id: string): Promise<Product[]>;
+}
+
+function paginate(items: Product[], query?: ProductQuery): Page<Product> {
+  const size = query?.size ?? DEFAULT_PAGE_SIZE;
+  const page = Math.max(0, query?.page ?? 0);
+  const start = page * size;
+  return {
+    items: items.slice(start, start + size),
+    total: items.length,
+    page,
+    size,
+    totalPages: Math.max(1, Math.ceil(items.length / size)),
+  };
 }
 
 function applyQuery(products: Product[], query?: ProductQuery): Product[] {
@@ -54,8 +70,8 @@ function applyQuery(products: Product[], query?: ProductQuery): Product[] {
 
 /** التنفيذ الحالي: يقرأ من البيانات الوهمية المحلية. */
 export class MockProductRepository implements ProductRepository {
-  async getAll(query?: ProductQuery): Promise<Product[]> {
-    return applyQuery(PRODUCTS, query);
+  async getAll(query?: ProductQuery): Promise<Page<Product>> {
+    return paginate(applyQuery(PRODUCTS, query), query);
   }
 
   async getFeatured(): Promise<Product[]> {
@@ -80,8 +96,10 @@ export class MockProductRepository implements ProductRepository {
 export class HttpProductRepository implements ProductRepository {
   constructor(private readonly client: ApiClient) {}
 
-  getAll(query?: ProductQuery): Promise<Product[]> {
-    return this.client.get<Product[]>('/products', {
+  getAll(query?: ProductQuery): Promise<Page<Product>> {
+    return this.client.get<Page<Product>>('/products', {
+      page: query?.page?.toString(),
+      size: query?.size?.toString(),
       category: query?.category,
       vehicleId: query?.vehicleId,
       search: query?.search,

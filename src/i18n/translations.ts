@@ -79,6 +79,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     'catalog.empty.title': 'لم يتم العثور على قطع تطابق بحثك',
     'catalog.empty.desc': 'جرب تغيير الفئة أو إيقاف خيار تصفية المركبة.',
     'catalog.empty.reset': 'إعادة تعيين الفلاتر',
+    'catalog.sortLabel': 'ترتيب',
+    'catalog.sort.featured': 'الأكثر تميزاً',
+    'catalog.sort.priceAsc': 'السعر: من الأقل',
+    'catalog.sort.priceDesc': 'السعر: من الأعلى',
+    'catalog.count': '{total} منتجاً',
+    'catalog.pageInfo': 'صفحة {page} من {pages}',
+    'home.featured': 'منتجات مختارة',
+    'home.featuredSub': 'أبرز التجهيزات المختارة لسيارتك',
+    'home.viewAll': 'عرض كل المنتجات',
 
     // تفاصيل المنتج
     'product.compatibleWith': 'متوافق مع:',
@@ -298,6 +307,15 @@ export const translations: Record<Lang, Record<string, string>> = {
     'catalog.empty.title': 'No parts match your search',
     'catalog.empty.desc': 'Try changing the category or turning off the vehicle filter.',
     'catalog.empty.reset': 'Reset filters',
+    'catalog.sortLabel': 'Sort',
+    'catalog.sort.featured': 'Featured',
+    'catalog.sort.priceAsc': 'Price: low to high',
+    'catalog.sort.priceDesc': 'Price: high to low',
+    'catalog.count': '{total} products',
+    'catalog.pageInfo': 'Page {page} of {pages}',
+    'home.featured': 'Featured products',
+    'home.featuredSub': 'Top gear picks for your build',
+    'home.viewAll': 'View all products',
 
     // product details
     'product.compatibleWith': 'Compatible with:',

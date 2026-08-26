@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRepositories } from './RepositoryProvider';
-import { Product, Vehicle, Category, Service, RigCategory, ProductQuery } from '../types';
+import { Product, Vehicle, Category, Service, RigCategory, ProductQuery, Page } from '../types';
 
 export interface AsyncState<T> {
   data: T;
@@ -40,12 +40,14 @@ function useAsync<T>(factory: () => Promise<T>, initial: T, deps: unknown[]): As
   return { data, loading, error };
 }
 
-export function useProducts(query?: ProductQuery): AsyncState<Product[]> {
+const EMPTY_PAGE: Page<Product> = { items: [], total: 0, page: 0, size: 12, totalPages: 1 };
+
+export function useProducts(query?: ProductQuery): AsyncState<Page<Product>> {
   const { products } = useRepositories();
-  return useAsync<Product[]>(
+  return useAsync<Page<Product>>(
     () => products.getAll(query),
-    [],
-    [query?.category, query?.vehicleId, query?.search, query?.sort],
+    EMPTY_PAGE,
+    [query?.category, query?.vehicleId, query?.search, query?.sort, query?.page, query?.size],
   );
 }
 

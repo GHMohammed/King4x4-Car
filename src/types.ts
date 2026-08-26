@@ -80,10 +80,23 @@ export interface Service {
   warranty: string;
 }
 
-/** معايير استعلام المنتجات — يستخدمها التنفيذ (Mock/Http) لتصفية النتائج */
+/** معايير استعلام المنتجات — يستخدمها التنفيذ (Mock/Http) لتصفية وترقيم النتائج */
 export interface ProductQuery {
   category?: string;
   vehicleId?: string;
   search?: string;
   sort?: 'featured' | 'newest' | 'price_asc' | 'price_desc';
+  /** رقم الصفحة (يبدأ من 0 كما في Spring Data) */
+  page?: number;
+  /** عدد العناصر في الصفحة */
+  size?: number;
+}
+
+/** نتيجة مرقّمة — نفس شكل Page في Spring Data */
+export interface Page<T> {
+  items: T[];
+  total: number;
+  page: number;
+  size: number;
+  totalPages: number;
 }

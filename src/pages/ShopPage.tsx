@@ -11,15 +11,6 @@ export const ShopPage: React.FC = () => {
   const { selectedVehicle, setSelectedVehicle } = useAppState();
   const { data: vehicles } = useVehicles();
 
-  const category = searchParams.get('category') ?? 'all';
-
-  const setCategory = (next: string) => {
-    const params = new URLSearchParams(searchParams);
-    if (next === 'all') params.delete('category');
-    else params.set('category', next);
-    setSearchParams(params, { replace: true });
-  };
-
   // Deep link: ?vehicle=<id> → set the global selected vehicle once vehicles load
   useEffect(() => {
     const vid = searchParams.get('vehicle');
@@ -48,8 +39,6 @@ export const ShopPage: React.FC = () => {
       selectedVehicle={selectedVehicle}
       onAddToCart={addToCart}
       onSelectVehicle={setSelectedVehicle}
-      category={category}
-      onCategoryChange={setCategory}
     />
   );
 };

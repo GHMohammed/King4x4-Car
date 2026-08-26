@@ -19,7 +19,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onSelectVehicle,
 }) => {
   const [query, setQuery] = useState('');
-  const { data: products } = useProducts();
+  const { data: productPage } = useProducts({ search: query.trim() || undefined, size: 6 });
   const { data: vehicles } = useVehicles();
   const { t, lang } = useLanguage();
 
@@ -35,14 +35,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   if (!isOpen) return null;
 
-  const matchedProducts = query.trim()
-    ? products.filter(
-        (p) =>
-          p.name.toLowerCase().includes(query.toLowerCase()) ||
-          p.arabicName.toLowerCase().includes(query.toLowerCase()) ||
-          p.brand.toLowerCase().includes(query.toLowerCase())
-      )
-    : products.slice(0, 4);
+  // نتائج المنتجات مصفّاة ومرقّمة من طبقة البيانات (server-side)
+  const matchedProducts = productPage.items;
 
   const matchedVehicles = query.trim()
     ? vehicles.filter(
